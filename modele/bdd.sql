@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 25 avr. 2019 à 14:02
+-- Généré le :  jeu. 25 avr. 2019 à 15:02
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -68,16 +68,19 @@ INSERT INTO `matiere` (`idMatiere`, `nomMatiere`, `coef`) VALUES
 
 CREATE TABLE `note` (
   `idNote` int(11) NOT NULL,
+  `idProfil` int(11) NOT NULL,
   `note` int(11) NOT NULL,
-  `idMatiere` varchar(255) NOT NULL
+  `idMatiere` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `note`
 --
 
-INSERT INTO `note` (`idNote`, `note`, `idMatiere`) VALUES
-(1, 15, '1');
+INSERT INTO `note` (`idNote`, `idProfil`, `note`, `idMatiere`) VALUES
+(1, 1, 15, 1),
+(4, 1, 16, 1),
+(5, 1, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -139,7 +142,8 @@ ALTER TABLE `note`
   ADD KEY `matiere` (`idMatiere`),
   ADD KEY `idMatiere` (`idMatiere`),
   ADD KEY `idMatiere_2` (`idMatiere`),
-  ADD KEY `idMatiere_3` (`idMatiere`);
+  ADD KEY `idMatiere_3` (`idMatiere`),
+  ADD KEY `idProfil` (`idProfil`);
 
 --
 -- Index pour la table `profil`
@@ -168,7 +172,7 @@ ALTER TABLE `matiere`
 -- AUTO_INCREMENT pour la table `note`
 --
 ALTER TABLE `note`
-  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `profil`
