@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 25 avr. 2019 à 13:29
+-- Généré le :  jeu. 25 avr. 2019 à 13:55
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -34,6 +34,13 @@ CREATE TABLE `bulletin` (
   `idMatiere` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `bulletin`
+--
+
+INSERT INTO `bulletin` (`idProfil`, `idNote`, `idMatiere`) VALUES
+(1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +53,13 @@ CREATE TABLE `matiere` (
   `coef` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `matiere`
+--
+
+INSERT INTO `matiere` (`idMatiere`, `nomMatiere`, `coef`) VALUES
+(1, 'maths', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -57,6 +71,13 @@ CREATE TABLE `note` (
   `note` int(11) NOT NULL,
   `idMatiere` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `note`
+--
+
+INSERT INTO `note` (`idNote`, `note`, `idMatiere`) VALUES
+(1, 15, '1');
 
 -- --------------------------------------------------------
 
@@ -73,6 +94,13 @@ CREATE TABLE `profil` (
   `mdp` varchar(255) NOT NULL,
   `section` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `profil`
+--
+
+INSERT INTO `profil` (`idProfil`, `nom`, `prenom`, `rang`, `login`, `mdp`, `section`) VALUES
+(1, 'Du Moulin', 'Jean-Baptiste', 1, 'JB', 'operations', 'SIO');
 
 -- --------------------------------------------------------
 
@@ -134,19 +162,19 @@ ALTER TABLE `referent`
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `idMatiere` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idMatiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `note`
 --
 ALTER TABLE `note`
-  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `idProfil` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
