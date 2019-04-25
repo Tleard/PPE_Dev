@@ -7,11 +7,11 @@ if(!isset($_SESSION["logged"]))
     try
     {
         $search = false;
-        $bdd = new PDO("mysql:host=localhost;charset=utf8;dbname=ppe;", "Belette", "Incorrect");
-        $req = $bdd->query('SELECT * FROM connexion');
+        $bdd = new PDO("mysql:host=localhost;charset=utf8;dbname=ppe;", "PPE_dev", "operations");
+        $req = $bdd->query('SELECT * FROM profil');
         while ($donnees = $req->fetch())
         {
-            if($donnees['user'] == $_POST['ndc'] && $donnees['mdp'] == $_POST['mdp'])
+            if($donnees['login'] == $_POST['ndc'] && $donnees['mdp'] == $_POST['mdp'])
             {
                 $search = true;
                 $_SESSION["logged"] = $_POST['ndc'];

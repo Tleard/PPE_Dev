@@ -14,7 +14,7 @@ if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['passwo
         echo "<p class=red>Bon, now faut cliquer sur la petite case, maggle</p>";
     } else {
         try {
-            $bdd = new PDO("mysql:host=localhost;charset=utf8;dbname=PPE;", "Belette", "Incorrect");
+            $bdd = new PDO("mysql:host=localhost;charset=utf8;dbname=ppe;", "PPE_dev", "operations");
             $bdd->exec("insert into connexion (user, mdp, nom, prenom) values ('" . $_POST['user'] . "','" . $_POST['$mdp'] . "','" . $_POST['$nom'] . "','" . $_POST['$prenom'] . "')");
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());

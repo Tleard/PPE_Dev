@@ -21,6 +21,16 @@
             <td>Votre prénom:</td>
             <td><input type="text" name="prenom" id="prenom" maxlength=20 placeholder="Votre prenom"/></td>
         </tr>
+        <tr>
+            <td>Votre classe:</td>
+            <td>
+                <select name="section" id="section">
+                    <option value="SIO">SIO</option>
+                    <option value="GPME">GPME</option>
+                    <option value="MUC">MUC</option>
+                </select>
+            </td>
+        </tr>
     </table>
     <br/>
     <input type="submit" value="Connexion"/>
@@ -82,8 +92,8 @@ if (isset($_POST['user']) && isset($_POST['mdp']) && isset($_POST['nom'])&& isse
     }
     else {
         try {
-            $bdd = new PDO("mysql:host=localhost;charset=utf8;dbname=PPE;", "Belette", "Incorrect");
-            $bdd->exec("insert into connexion (user, mdp, nom, prenom) values ('" . $_POST['user'] . "','" . $_POST['mdp'] . "','" . $_POST['nom'] . "','" . $_POST['prenom'] . "')");
+            $bdd = new PDO("mysql:host=localhost;charset=utf8;dbname=ppe;", "PPE_dev", "operations");
+            $bdd->exec("insert into profil (login, mdp, nom, prenom, section) values ('" . $_POST['user'] . "','" . $_POST['mdp'] . "','" . $_POST['nom'] . "','" . $_POST['prenom'] . "','" . $_POST['section'] . "')");
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }

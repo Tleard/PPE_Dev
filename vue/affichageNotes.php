@@ -17,8 +17,8 @@
             <article>
                 <table class="tableau">
                 <?php
-                    $bdd = new PDO("mysql:host=localhost;dbname=ppe;charset=utf8", "root", "");
-                    $req = $bdd->query('SELECT * FROM note');
+                    $bdd = new PDO("mysql:host=localhost;charset=utf8;dbname=ppe;", "PPE_dev", "operations");
+                    $req = $bdd->query('SELECT * FROM notes');
                     while ($donnees = $req->fetch())
                     {
                         echo "<tr>";
