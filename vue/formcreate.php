@@ -97,7 +97,10 @@ if (isset($_POST['user']) && isset($_POST['mdp']) && isset($_POST['nom'])&& isse
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
-        echo "<p class='green'>Votre compte à bien été crée </p>";
+        echo "<script language='javascript'>alert('Votre compte à été créer avec succés');
+        window.location.href ='index.php';
+        </script>";
+
     }
 }
 ?>

@@ -1,11 +1,11 @@
 <?php
 include "header.inc.php"
 ?>
-    <aside>
-        <?php
-            include "formlogin.php"
-        ?>
-    </aside>
+<!--    <aside>
+        <
+/*            include "formlogin.php"
+        */
+    </aside>-->
     <section>
         <h1>Créez votre compte</h1>
         <br/>
