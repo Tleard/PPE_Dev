@@ -27,6 +27,7 @@ if(!isset($_SESSION["logged"]))
     {
         die('Erreur : ' . $e->getMessage());
     }
+
 }
 echo "Bienvenue ".$_SESSION["logged"].", vous êtes connecté !";
 ?>

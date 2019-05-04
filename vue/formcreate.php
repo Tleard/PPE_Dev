@@ -37,9 +37,17 @@
     <br/>
 </form>
 <?php
-$options = array(
-    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-);
+    $options = array(
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+    );
+
+    session_start();
+    include('../modele/connectDB.php');
+
+
+
+
+
 
 if (isset($_POST['user']) && isset($_POST['mdp']) && isset($_POST['nom'])&& isset($_POST['prenom'])) {
     if (empty($_POST['user']) && empty($_POST['mdp']) && empty($_POST['nom']) && empty($_POST['prenom'])) {

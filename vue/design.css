@@ -60,7 +60,9 @@ footer{
     right: 0;
 }
 
-container
+.icon-form {
+    color: #000000;
+}
 
 .page-footer{
  position: absolute;
