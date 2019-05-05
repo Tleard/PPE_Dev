@@ -3,7 +3,8 @@ session_start();
 include('../modele/connectDB.php');
 
 if (isset($_SESSION['id'])){
-    header('Location: ../vue/index.php');
+    echo "<script language='javascript'>alert('Vous posséder déja un compte');</script>";
+    header('Location: index.php');
     exit;
 }
 
@@ -84,7 +85,7 @@ if(!empty($_POST)){
             $DB->insert("INSERT INTO profil (login, nom, prenom, mail, mdp, date_creation) VALUES (?,?, ?, ?, ?, ?)",
                 array($login,$nom, $prenom, $mail, $mdp, $date_creation));
             echo "<script language='javascript'>alert('Votre compte a été créer avec succés');
-            window.location.href ='index.php';
+            window.location.href ='login.php';
             </script>";
             exit;
         }
