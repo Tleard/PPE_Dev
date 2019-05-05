@@ -26,7 +26,7 @@
             <!-- Register -->
                 <a href="account.php">Inscription</a>
 
-        </form>
+            </form>
 
 
         <!--<form class="form-signin">

@@ -4,7 +4,9 @@
     <list default="true" id="0c5d0e8b-f4b2-4676-89b8-b990d2455c1c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modele/connectDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/modele/connectDB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/formcreate.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/formcreate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +37,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modele/connectDB.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+            <state relative-caret-position="375">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modele/bdd.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="97" column="33" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -44,15 +55,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vue/admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state>
+              <caret column="5" selection-start-column="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vue/formcreate.php">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="673">
+              <caret line="91" column="23" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vue/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -61,9 +85,12 @@
     <findStrings>
       <find>connectdb</find>
       <find>mail</find>
+      <find>profil</find>
+      <find>utilisateur</find>
     </findStrings>
     <replaceStrings>
       <replace>login</replace>
+      <replace>profil</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -73,8 +100,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/vue/footer.inc.php" />
-        <option value="$PROJECT_DIR$/vue/admin.php" />
-        <option value="$PROJECT_DIR$/vue/index.php" />
         <option value="$PROJECT_DIR$/vue/account.php" />
         <option value="$PROJECT_DIR$/vue/enterGrades.php" />
         <option value="$PROJECT_DIR$/vue/design.css" />
@@ -82,16 +107,17 @@
         <option value="$PROJECT_DIR$/modele/modele.php" />
         <option value="$PROJECT_DIR$/vue/login.php" />
         <option value="$PROJECT_DIR$/vue/formlogin.php" />
+        <option value="$PROJECT_DIR$/vue/index.php" />
+        <option value="$PROJECT_DIR$/vue/admin.php" />
         <option value="$PROJECT_DIR$/modele/connectDB.php" />
         <option value="$PROJECT_DIR$/vue/formcreate.php" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="826" />
-    <option name="y" value="42" />
-    <option name="width" value="949" />
-    <option name="height" value="1050" />
+    <option name="x" value="961" />
+    <option name="width" value="959" />
+    <option name="height" value="1052" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -130,6 +156,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="database.data.csv.formats" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -160,18 +187,18 @@
       <workItem from="1556914786701" duration="772000" />
       <workItem from="1556974643156" duration="7671000" />
       <workItem from="1557046170427" duration="319000" />
-      <workItem from="1557055885580" duration="1192000" />
+      <workItem from="1557055885580" duration="6357000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18629000" />
+    <option name="totallyTimeSpent" value="23794000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26414087" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.5421558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -217,18 +244,8 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modele/bdd.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/vue/affichageNotes.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vue/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vue/design.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -265,24 +282,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vue/admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modele/connectDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vue/footer.inc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modele/bdd.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="97" column="33" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -293,8 +303,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vue/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modele/connectDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vue/formcreate.php">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="673">
+          <caret line="91" column="23" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

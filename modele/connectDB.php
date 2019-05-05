@@ -24,12 +24,22 @@ class connexionDB {
         }
     }
 
+    /**
+     * @param $sql
+     * @param array $data
+     * @return bool|PDOStatement
+     */
     public function query($sql, $data = array()){
         $req = $this->connexion->prepare($sql);
         $req->execute($data);
         return $req;
     }
 
+    /**
+     * @param $sql
+     * @param array $data
+     *
+     */
     public function insert($sql, $data = array()){
         $req = $this->connexion->prepare($sql);
         $req->execute($data);
