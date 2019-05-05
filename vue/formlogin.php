@@ -1,10 +1,20 @@
 <h2>Connectez-vous</h2>
+<hr>
 <form method = "post" action ="index.php">
-    <input type="text" name="ndc" id="ndc" maxlength=20 placeholder="Votre pseudo(max20caract.)"/>
-    <input type="password" name="mdp" id="mdp" maxlength=15 placeholder="*****"/>
+    <div class="input-icon col-xs-12">
+        <div class="icon-form col-xs-2">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="col-xs-10">
+            <input type="text" name="ndc" id="ndc" maxlength=20 placeholder="Votre pseudo(max20caract.)"/>
+        </div>
+    </div>
+
+    <i class="fas fa-key"></i><input type="password" name="mdp" id="mdp" maxlength=15 placeholder="*****"/>
     <input type="submit" value="connexion"/>
 </form>
 <a href="account.php"><p>Créez un compte</p></a>
+
 
 <?php
 
@@ -28,6 +38,9 @@ if(!isset($_SESSION["logged"]))
         {
             header("Location:connect.php");
         }*/
+
+
+
     }
     catch (Exception $e)
     {
