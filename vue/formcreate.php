@@ -19,7 +19,7 @@ if(!empty($_POST)){
         $mail = htmlentities(strtolower(trim($mail)));
         $mdp = trim($mdp);
         $confmdp = trim($confmdp);
-
+        $section = trim($section);
 
         if(empty($login)){
             $valid = false;
@@ -42,7 +42,19 @@ if(!empty($_POST)){
             $valid = false;
             $error_login = "Ce nom d'utilisateur existe déjà";
         }
-    }
+        }
+
+        if (empty($section)){
+            if (empty($teacher))
+            {
+                $valid = false;
+                $error_section = "Veuillez selectionner une section, ou dire si vous êtes professeur.";
+            } else {
+                $section= NULL;
+            }
+        } elseif (!empty($teacher)) {
+            $section = NULL;
+        }
 
         if(empty($nom)){
             $valid = false;
@@ -82,8 +94,8 @@ if(!empty($_POST)){
 
             $mdp = crypt($mdp, "unebelleteétaitunjourdansunprésquandelleviunchasseurilditdqlsdlkqnsdqnsldknsqkn");
             $date_creation = date('Y-m-d H:i:s');
-            $DB->insert("INSERT INTO profil (login, nom, prenom, mail, mdp, date_creation) VALUES (?,?, ?, ?, ?, ?)",
-                array($login,$nom, $prenom, $mail, $mdp, $date_creation));
+            $DB->insert("INSERT INTO profil (login, nom, prenom, mail, mdp, date_creation, classe) VALUES (? ,?, ?, ?, ?, ?, ?)",
+                array($login,$nom, $prenom, $mail, $mdp, $date_creation, $section));
             echo "<script language='javascript'>alert('Votre compte a été créer avec succés');
             window.location.href ='login.php';
             </script>";
@@ -144,6 +156,24 @@ if(!empty($_POST)){
     ?>
     <input type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
     <input type="password" placeholder="Confirmer le mot de passe" name="confmdp" required>
+
+    <?php
+    if (isset($error_section)){
+        ?>
+        <div><?= $error_section ?></div>
+        <?php
+    }
+    ?>
+    <label for="section-select">Entrer votre section:</label>
+    <select id="section-select" name="section">
+        <option value="SIO">SIO</option>
+        <option value="GMPE">GMPE</option>
+        <option value="MUC">MUC</option>
+    </select>
+
+    <label for="teacher">Je suis un Professeur :</label>
+    <input type="checkbox" name="teacher" id="teacher">
+    
     <button type="submit" name="inscription">Envoyer</button>
 </form>
 </body>
