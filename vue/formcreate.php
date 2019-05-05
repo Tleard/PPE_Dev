@@ -166,6 +166,7 @@ if(!empty($_POST)){
     ?>
     <label for="section-select">Entrer votre section:</label>
     <select id="section-select" name="section">
+        <option value="">--Section--</option>
         <option value="SIO">SIO</option>
         <option value="GMPE">GMPE</option>
         <option value="MUC">MUC</option>
