@@ -1,11 +1,10 @@
 <?php
-
-class connexionDB
-{
-    private $host    = 'localhost';
-    private $name    = 'ppe';
-    private $user    = 'PPE_dev';
-    private $pass    = 'operations';
+// Déclaration d'une nouvelle classe
+class connexionDB {
+    private $host    = 'localhost';   // nom de l'host
+    private $name    = 'ppe';     // nom de la base de donnée
+    private $user    = 'PPE_dev';        // utilisateur
+    private $pass    = 'operations';        // mot de passe
     private $connexion;
 
     function __construct($host = null, $name = null, $user = null, $pass = null){
@@ -18,50 +17,25 @@ class connexionDB
         try{
             $this->connexion = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->name,
                 $this->user, $this->pass, array(PDO::MYSQL_ATTR_INIT_COMMAND =>'SET NAMES UTF8',
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
         }catch (PDOException $e){
-            echo 'Une erreur des survenue lors de la création de la base de données!';
+            echo 'Erreur : Impossible de se connecter  à la BDD !';
             die();
         }
     }
 
-    /**
-     * @param $sql
-     * @param array $data
-     *
-     * Permet d'insérer des données dans la base de données.
-     * exemple :
-     *  $DB->insert("INSERT INTO nom_table (prenom, nom, age) VALUES (?, ?, ?)",
-     *  array("jean", "dupont", 20));
-     */
-    public function insert($sql, $data =array())
-    {
+    public function query($sql, $data = array()){
         $req = $this->connexion->prepare($sql);
         $req->execute($data);
+        return $req;
     }
 
-    /**
-     * @param $sql
-     * @param array $data
-     * @return bool|PDOStatement
-     *
-     * Permet de chercher des info dans la BDD.
-     * exemple :
-     * $req = $DB->query("SELECT * FROM nom_table");
-     * $req = $req->fetch();
-     *
-     */
-    public function query($sql, $data =array())
-    {
+    public function insert($sql, $data = array()){
         $req = $this->connexion->prepare($sql);
         $req->execute($data);
-
-        return $req;
     }
 }
 
-
-
-
-/***********   Code à deplacer dans la page de login pour la gestion d'erreur ***********/
-
+// Faire une connexion à votre fonction
+$DB = new connexionDB();
+?>
