@@ -42,8 +42,10 @@ if(!empty($_POST)){
             $_SESSION['nom'] = $req['nom'];
             $_SESSION['prenom'] = $req['prenom'];
             $_SESSION['login'] = $req['login'];
-
-
+            $_SESSION['rang'] = $req['rang'];
+            $_SESSION['classe'] = $req['classe'];
+            $_SESSION['mail'] = $req['mail'];
+            $_SESSION['date_creation'] = $req['date_creation'];
 
             header('Location:  index.php');
             exit;

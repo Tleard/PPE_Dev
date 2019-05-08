@@ -51,6 +51,7 @@ if(!empty($_POST)){
                 $error_section = "Veuillez selectionner une section, ou dire si vous êtes professeur.";
             } else {
                 $section= NULL;
+                $rang = 0;
             }
         } elseif (!empty($teacher)) {
             $section = NULL;
@@ -94,8 +95,8 @@ if(!empty($_POST)){
 
             $mdp = crypt($mdp, "unebelleteétaitunjourdansunprésquandelleviunchasseurilditdqlsdlkqnsdqnsldknsqkn");
             $date_creation = date('Y-m-d H:i:s');
-            $DB->insert("INSERT INTO profil (login, nom, prenom, mail, mdp, date_creation, classe) VALUES (? ,?, ?, ?, ?, ?, ?)",
-                array($login,$nom, $prenom, $mail, $mdp, $date_creation, $section));
+            $DB->insert("INSERT INTO profil (login, nom, prenom, mail, mdp, date_creation, classe, rang) VALUES (? ,?, ?, ?, ?, ?, ?, ?)",
+                array($login,$nom, $prenom, $mail, $mdp, $date_creation, $section, $rang));
             echo "<script language='javascript'>alert('Votre compte a été créer avec succés');
             window.location.href ='login.php';
             </script>";

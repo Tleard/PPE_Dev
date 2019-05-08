@@ -14,7 +14,7 @@
 
             <?php
             if (isset($_SESSION['id'])){
-             echo 'Bienvenue' . ' '. $_SESSION['prenom'] .' '. $_SESSION['nom'];
+             echo 'Bienvenue' . ' '. $_SESSION['prenom'] .' '. $_SESSION['nom'] ;
 
              echo '<a href="deconnexion.php">
             Deconnexion
