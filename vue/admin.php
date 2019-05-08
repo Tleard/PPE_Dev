@@ -21,40 +21,50 @@ session_start();
     <h2>Profil en attente de validation</h2><br>
 
     <?php
-    $afficher_profil = $DB->query("SELECT * FROM profil WHERE classe = 2 ",
+    $array_profil = $DB->query("SELECT * FROM profil WHERE rang = 0",
         array($_SESSION['id']));
-    $afficher_profil = $afficher_profil->fetchAll();
+    $array_profil = $array_profil->fetchAll();
     ?>
+
     <table class="table">
-        <thead>
         <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Adresse mail</th>
-            <th scope="col">Statut</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresse mail</th>
+            <th>Statut</th>
+            <th>Confirmer</th>
         </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
+        <?php
+        foreach($array_profil as $ap){
+            ?>
+            <tr>
+                <td><?= $ap['nom'] ?></td>
+                <td><?= $ap['prenom'] ?></td>
+                <td><?= $ap['mail']?></td>
+                <td>En attente de confirmation</td>
+                <td style="padding-top: 0px">
+                    <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ; ?>"> <input name="profil" value="<?=$ap['id']?>" type="submit" class="btn-admin btn-success btn"></form></td>
+            </tr>
+            <?php
+        }
+        ?>
     </table>
+
+    <?php
+    if (isset($_POST['profil'])){
+        $DB->insert("UPDATE profil SET rang = '2'WHERE id = ?",
+            array($_POST['profil']));
+        /*$DB->insert("UPDATE profil SET rang = 2 WHERE profil.id = ?", $_POST['profil']);*/
+        echo'<script type="text/javascript">
+        alert("Le compte a bine été validé");
+        </script>
+        ';
+    }
+    echo var_dump($DB->insert("UPDATE profil SET rang = 2 WHERE profil.id = ?", $_POST['profil']));
+    ?>
+
+
+
 
     <?php
     include "footer.inc.php"
