@@ -52,7 +52,7 @@
                 <?php
                 if (isset($_SESSION['id'])){
                     $rang = $_SESSION['rang'];
-                    if ($rang == 2){
+                    if ($rang == 3){
                         echo "
                         <li class=\"nav-item\">
                             <a class=\"nav-link\" href=\"admin.php\">Admin</a>
@@ -61,13 +61,12 @@
 
                     }
 
-                    if ($rang == 3 || $rang == 0){
+                    if ($rang == 2 || $rang == 0){
                         echo"
                         <li class=\"nav-item\">
                             <a class=\"nav-link\" href=\"enterGrades.php\">Entrée des notes</a>
                         </li>
                         ";
-                        echo $rang;
                     }
                 }
 
@@ -93,7 +92,7 @@
                         ?>
 
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" href="account.php">
+                            <a class="nav-link waves-effect waves-light" href="login.php">
                                 Connexion<i class="fas fa-sign-in-alt"></i>
                             </a>
                         </li>

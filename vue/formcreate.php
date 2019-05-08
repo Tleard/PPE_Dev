@@ -20,7 +20,7 @@ if(!empty($_POST)){
         $mdp = trim($mdp);
         $confmdp = trim($confmdp);
         $section = trim($section);
-
+        $rang = 1;
         if(empty($login)){
             $valid = false;
             $error_login = ("Le nom d'utilisateur ne peut pas être vide");
@@ -92,7 +92,6 @@ if(!empty($_POST)){
         }
 
         if($valid){
-
             $mdp = crypt($mdp, "unebelleteétaitunjourdansunprésquandelleviunchasseurilditdqlsdlkqnsdqnsldknsqkn");
             $date_creation = date('Y-m-d H:i:s');
             $DB->insert("INSERT INTO profil (login, nom, prenom, mail, mdp, date_creation, classe, rang) VALUES (? ,?, ?, ?, ?, ?, ?, ?)",
