@@ -54,13 +54,11 @@ session_start();
     if (isset($_POST['profil'])){
         $DB->insert("UPDATE profil SET rang = '2'WHERE id = ?",
             array($_POST['profil']));
-        /*$DB->insert("UPDATE profil SET rang = 2 WHERE profil.id = ?", $_POST['profil']);*/
         echo'<script type="text/javascript">
         alert("Le compte a bine été validé");
         </script>
         ';
     }
-    echo var_dump($DB->insert("UPDATE profil SET rang = 2 WHERE profil.id = ?", $_POST['profil']));
     ?>
 
 

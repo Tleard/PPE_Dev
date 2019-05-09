@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Dim 05 Mai 2019 à 15:50
+-- Généré le :  Jeu 09 Mai 2019 à 14:14
 -- Version du serveur :  5.7.25-0ubuntu0.18.04.2
 -- Version de PHP :  7.2.15-0ubuntu0.18.04.1
 
@@ -90,6 +90,8 @@ CREATE TABLE `profil` (
   `prenom` varchar(50) DEFAULT NULL,
   `mail` varchar(191) DEFAULT NULL,
   `mdp` text,
+  `classe` varchar(60) DEFAULT NULL,
+  `rang` int(10) NOT NULL,
   `date_creation` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2;
 
@@ -97,13 +99,12 @@ CREATE TABLE `profil` (
 -- Contenu de la table `profil`
 --
 
-INSERT INTO `profil` (`id`, `login`, `nom`, `prenom`, `mail`, `mdp`, `date_creation`) VALUES
-(1, '', 'Leard', 'Thomas', 'mail@gmail.com', '$6lqeO/tL7P/c', NULL),
-(2, 'lo', 'lo', 'lo', 'gmail@gmail.com', '$6JwwuSfpFLes', '2019-05-05 15:20:53'),
-(3, 'lolo', 'lolo', 'lolo', 'lolo@gmail.com', '$6NtYz.nl204o', '2019-05-05 15:21:12'),
-(4, 'Pseudo', 'lolo', 'lolo', 'lolo2@gmail.com', '$6JwwuSfpFLes', '2019-05-05 15:43:46'),
-(5, 'itame', 'lolo', 'lolo', 'lklk@gmail.com', 'unKI2Nce1vHag', '2019-05-05 15:46:17'),
-(6, 'lolo', 'lklk', 'lklk', 'lk@gmail.com', 'unKI2Nce1vHag', '2019-05-05 15:48:31');
+INSERT INTO `profil` (`id`, `login`, `nom`, `prenom`, `mail`, `mdp`, `classe`, `rang`, `date_creation`) VALUES
+(9, 'ITLK', 'lo', 'lo', 'mpmpm@gmail.com', 'unvE13nwuFwf6', 'SIO', 2, '2019-05-05 18:14:13'),
+(17, 'admin', 'Leard', 'Thomas', 'tleard@gmail.com', 'un0JWpJYzcQl2', 'SIO', 3, '2019-05-08 18:18:37'),
+(18, 'pseudo', 'Lucas', 'Holderith', 'lklk@gmail.com', 'uneDM4EMOsDUc', 'SIO', 2, '2019-05-08 18:30:42'),
+(19, 'Beteta', 'Stephane', 'Beteta', 'beteta@gmail.com', 'unKI2Nce1vHag', NULL, 2, '2019-05-08 19:10:14'),
+(20, 'Dylan', 'Martin', 'Dylan', 'mlml@gmail.com', 'unKI2Nce1vHag', 'SIO', 1, '2019-05-09 08:09:24');
 
 -- --------------------------------------------------------
 
@@ -176,7 +177,7 @@ ALTER TABLE `note`
 -- AUTO_INCREMENT pour la table `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
