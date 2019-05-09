@@ -55,7 +55,66 @@ session_start();
         $DB->insert("UPDATE profil SET rang = '2'WHERE id = ?",
             array($_POST['profil']));
         echo'<script type="text/javascript">
-        alert("Le compte a bine été validé");
+        alert("Le compte a bien été validé");
+        </script>
+        ';
+    }
+    ?>
+
+    <h2>Accorder à un utilisateur le rang d'admin</h2><br>
+
+    <?php
+    $array_all_profil = $DB->query("SELECT * FROM profil where rang != 3");
+    $array_all_profil = $array_all_profil->fetchAll();
+    ?>
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresse mail</th>
+            <th>Rang</th>
+            <th>Confirmer</th>
+        </tr>
+        <?php
+        foreach($array_all_profil as $aap){
+            ?>
+            <tr>
+                <td><?= $aap['nom'] ?></td>
+                <td><?= $aap['prenom'] ?></td>
+                <?php
+                switch ($aap['rang']){
+                    case(1):
+                        $aap['rang'] = "Eleve";
+                        break;
+                    case(0):
+                        $aap['rang'] = "Professeur en attende de validation";
+                        break;
+                    case(3):
+                        $aap['rang'] = "Admin";
+                        break;
+                    case(2):
+                        $aap['rang'] = "Professeur";
+                        break;
+                }
+
+                ?>
+                <td><?= $aap['mail']?></td>
+                <td><?= $aap['rang']?></td>
+                <td style="padding-top: 0px">
+                    <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ; ?>"> <input name="admin" value="<?=$aap['id']?>" type="submit" class="btn-admin btn-success btn"></form></td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+
+    <?php
+    if (isset($_POST['admin'])){
+        $DB->insert("UPDATE profil SET rang = '3'WHERE id = ?",
+            array($_POST['admin']));
+        echo'<script type="text/javascript">
+        alert("Le compte a bien été promu au rang de Admin");
         </script>
         ';
     }
