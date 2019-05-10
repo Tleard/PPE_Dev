@@ -46,7 +46,7 @@
                     <a class="nav-link" href="enterGrades.php"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mes notes</a>
+                    <a class="nav-link" href="affichageNotes.php">Mes notes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-user"></i>Contact</a>

@@ -28,9 +28,6 @@ include ('../modele/connectDB.php');
         }
     }
     ?>
-
-
-
 <?php
 include "footer.inc.php";
 ?>
