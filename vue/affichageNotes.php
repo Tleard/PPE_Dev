@@ -1,9 +1,11 @@
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>Affichage des notes</title>
-        <link rel="stylesheet" href="design/design.css"/>
-    </head>
+<?php
+session_start();
+include ('../modele/connectDB.php');
+?>
+
+<?php
+include ('header.inc.php');
+?>
     <body>
         <header>
             <table class="titre">
@@ -15,20 +17,21 @@
         <section>
             <h2>Année 2018/2019</h2>
             <article>
-                <table class="tableau">
+                <table class="table">
                 <?php
-                    $bdd = new PDO("mysql:host=localhost;dbname=ppe;charset=utf8", "PPE_dev", "operations");
-                    $req = $bdd->query('SELECT * FROM note, matiere');
-                    while ($donnees = $req->fetch())
-                    {
-                        echo "<tr>";
-                        echo "<td>".$donnees['nomMatiere']." : </td>";
-                        echo "<td>".$donnees['note']."</td>";
-                        echo "</tr>";
-                    }
+                $array_notes = $DB->query("SELECT * FROM note");
+                $array_notes = $array_notes->fetchAll();
+                foreach($array_notes as $an) {
+
+                    echo "<tr> <td>" . $an['note'] . "</td>";
+                    echo"<td>". $an['idMatiere'] ."</td>";
+                    echo"</tr>";
+                }
                 ?>
+
                 </table>
             </article>
         </section>
-    </body>
-</html>
+    <?php
+    include('footer.inc.php')
+    ?>
