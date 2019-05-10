@@ -121,6 +121,65 @@ session_start();
     ?>
 
 
+    <h2>Supprimer un compte.</h2><br>
+
+    <?php
+    $array_del_profil = $DB->query("SELECT * FROM profil where rang != 3");
+    $array_del_profil = $array_del_profil->fetchAll();
+    ?>
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresse mail</th>
+            <th>Rang</th>
+            <th>Confirmer</th>
+        </tr>
+        <?php
+        foreach($array_del_profil as $adelp){
+            ?>
+            <tr>
+                <td><?= $adelp['nom'] ?></td>
+                <td><?= $adelp['prenom'] ?></td>
+                <?php
+                switch ($adelp['rang']){
+                    case(1):
+                        $adelp['rang'] = "Eleve";
+                        break;
+                    case(0):
+                        $adelp['rang'] = "Professeur en attende de validation";
+                        break;
+                    case(3):
+                        $adelp['rang'] = "Admin";
+                        break;
+                    case(2):
+                        $adelp['rang'] = "Professeur";
+                        break;
+                }
+
+                ?>
+                <td><?= $adelp['mail']?></td>
+                <td><?= $adelp['rang']?></td>
+                <td style="padding-top: 0px">
+                    <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ; ?>"> <input name="delete" value="<?=$adelp['id']?>" type="submit" class="btn-admin btn-success btn"></form></td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+
+    <?php
+    if (isset($_POST['delete'])){
+        $DB->insert("DELETE FROM profil WHERE profil.id = 9;",
+            array($_POST['delete']));
+        echo'<script type="text/javascript">
+        alert("Le compte a bien été supprimé");
+        </script>
+        ';
+    }
+    ?>
+
+
 
 
     <?php

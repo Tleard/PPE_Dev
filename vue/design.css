@@ -22,6 +22,7 @@ button:focus {
 .icon-form {
     color: #000000;
 }
+
 input.hidden {
     position: absolute;
     left: -9999px;
@@ -35,6 +36,8 @@ input.hidden {
     border:2px solid #03b1ce ;}
 .tital{ font-size:16px; font-weight:500;}
 .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}
+
+
 footer{
-    position: relative!important;
+    position: sticky!important;
 }
