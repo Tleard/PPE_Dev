@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 10 mai 2019 à 16:49
+-- Généré le :  ven. 10 mai 2019 à 17:04
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -93,7 +93,7 @@ INSERT INTO `note` (`idProfil`, `idNote`, `note`, `idMatiere`) VALUES
 --
 
 CREATE TABLE `profil` (
-  `idProfil` int(255) UNSIGNED NOT NULL,
+  `id` int(255) UNSIGNED NOT NULL,
   `login` text NOT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE `profil` (
 -- Déchargement des données de la table `profil`
 --
 
-INSERT INTO `profil` (`idProfil`, `login`, `nom`, `prenom`, `mail`, `mdp`, `classe`, `rang`, `date_creation`) VALUES
+INSERT INTO `profil` (`id`, `login`, `nom`, `prenom`, `mail`, `mdp`, `classe`, `rang`, `date_creation`) VALUES
 (9, 'ITLK', 'lo', 'lo', 'mpmpm@gmail.com', 'unvE13nwuFwf6', 'SIO', 2, '2019-05-05 18:14:13'),
 (17, 'admin', 'Leard', 'Thomas', 'tleard@gmail.com', 'un0JWpJYzcQl2', 'SIO', 3, '2019-05-08 18:18:37'),
 (18, 'pseudo', 'Lucas', 'Holderith', 'lklk@gmail.com', 'uneDM4EMOsDUc', 'SIO', 2, '2019-05-08 18:30:42'),
@@ -159,7 +159,7 @@ ALTER TABLE `note`
 -- Index pour la table `profil`
 --
 ALTER TABLE `profil`
-  ADD PRIMARY KEY (`idProfil`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `mail` (`mail`);
 
 --
@@ -189,7 +189,7 @@ ALTER TABLE `note`
 -- AUTO_INCREMENT pour la table `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `idProfil` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
