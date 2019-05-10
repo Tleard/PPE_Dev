@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Acceuil
+                    <a class="nav-link" href="index.php">Accueil
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
