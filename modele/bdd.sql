@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Jeu 09 Mai 2019 à 14:14
--- Version du serveur :  5.7.25-0ubuntu0.18.04.2
--- Version de PHP :  7.2.15-0ubuntu0.18.04.1
+-- Hôte : 127.0.0.1
+-- Généré le :  ven. 10 mai 2019 à 16:49
+-- Version du serveur :  10.1.30-MariaDB
+-- Version de PHP :  7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -33,7 +35,7 @@ CREATE TABLE `bulletin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `bulletin`
+-- Déchargement des données de la table `bulletin`
 --
 
 INSERT INTO `bulletin` (`idProfil`, `idNote`, `idMatiere`) VALUES
@@ -52,11 +54,12 @@ CREATE TABLE `matiere` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `matiere`
+-- Déchargement des données de la table `matiere`
 --
 
 INSERT INTO `matiere` (`idMatiere`, `nomMatiere`, `coef`) VALUES
-(1, 'maths', 2);
+(1, 'maths', 2),
+(2, 'Fançais', 2);
 
 -- --------------------------------------------------------
 
@@ -65,17 +68,23 @@ INSERT INTO `matiere` (`idMatiere`, `nomMatiere`, `coef`) VALUES
 --
 
 CREATE TABLE `note` (
+  `idProfil` int(11) NOT NULL,
   `idNote` int(11) NOT NULL,
   `note` int(11) NOT NULL,
   `idMatiere` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `note`
+-- Déchargement des données de la table `note`
 --
 
-INSERT INTO `note` (`idNote`, `note`, `idMatiere`) VALUES
-(1, 15, '1');
+INSERT INTO `note` (`idProfil`, `idNote`, `note`, `idMatiere`) VALUES
+(20, 1, 15, '1'),
+(17, 2, 14, '1'),
+(20, 3, 16, '1'),
+(17, 4, 14, '2'),
+(20, 5, 16, '2'),
+(20, 6, 12, '2');
 
 -- --------------------------------------------------------
 
@@ -84,7 +93,7 @@ INSERT INTO `note` (`idNote`, `note`, `idMatiere`) VALUES
 --
 
 CREATE TABLE `profil` (
-  `id` int(255) UNSIGNED NOT NULL,
+  `idProfil` int(255) UNSIGNED NOT NULL,
   `login` text NOT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL,
@@ -96,10 +105,10 @@ CREATE TABLE `profil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=ucs2;
 
 --
--- Contenu de la table `profil`
+-- Déchargement des données de la table `profil`
 --
 
-INSERT INTO `profil` (`id`, `login`, `nom`, `prenom`, `mail`, `mdp`, `classe`, `rang`, `date_creation`) VALUES
+INSERT INTO `profil` (`idProfil`, `login`, `nom`, `prenom`, `mail`, `mdp`, `classe`, `rang`, `date_creation`) VALUES
 (9, 'ITLK', 'lo', 'lo', 'mpmpm@gmail.com', 'unvE13nwuFwf6', 'SIO', 2, '2019-05-05 18:14:13'),
 (17, 'admin', 'Leard', 'Thomas', 'tleard@gmail.com', 'un0JWpJYzcQl2', 'SIO', 3, '2019-05-08 18:18:37'),
 (18, 'pseudo', 'Lucas', 'Holderith', 'lklk@gmail.com', 'uneDM4EMOsDUc', 'SIO', 2, '2019-05-08 18:30:42'),
@@ -118,7 +127,7 @@ CREATE TABLE `referent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Index pour les tables exportées
+-- Index pour les tables déchargées
 --
 
 --
@@ -143,13 +152,14 @@ ALTER TABLE `note`
   ADD KEY `matiere` (`idMatiere`),
   ADD KEY `idMatiere` (`idMatiere`),
   ADD KEY `idMatiere_2` (`idMatiere`),
-  ADD KEY `idMatiere_3` (`idMatiere`);
+  ADD KEY `idMatiere_3` (`idMatiere`),
+  ADD KEY `id` (`idProfil`);
 
 --
 -- Index pour la table `profil`
 --
 ALTER TABLE `profil`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idProfil`),
   ADD UNIQUE KEY `mail` (`mail`);
 
 --
@@ -160,24 +170,28 @@ ALTER TABLE `referent`
   ADD KEY `idMatiere` (`idMatiere`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `idMatiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idMatiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT pour la table `note`
 --
 ALTER TABLE `note`
-  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT pour la table `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idProfil` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
