@@ -20,8 +20,8 @@ include ('header.inc.php');
                 <table class="table">
                 <?php
                 $array_notes = $DB->query("SELECT matiere.nomMatiere, note.note
-                from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.idProfil
-                WHERE profil.idProfil = 20");
+                from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                WHERE profil.id = ?", array($_SESSION['id']));
                 $array_notes = $array_notes->fetchAll();
                 foreach($array_notes as $an) {
 
