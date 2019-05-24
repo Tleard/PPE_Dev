@@ -39,7 +39,7 @@ input.hidden {
 
 
 footer{
-    position: sticky!important;
+    position: relative;
 }
 .center{
     margin-left: 44%;

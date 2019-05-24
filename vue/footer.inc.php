@@ -1,4 +1,4 @@
-<footer class="page-footer font-small grey pt-4" style="position: absolute;width: 100%">
+<footer class="page-footer font-small grey pt-4" style="width: 100%">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">

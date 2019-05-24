@@ -31,7 +31,7 @@ include ('../modele/connectDB.php');
 <form action="enterGrades.php" method="post">
     <table class="center">
         <tr>
-            <td>Choisir l'élève :</td><td><select id="student"><option value="">Choisir un élève</option><?php
+            <td>Choisir l'élève :</td><td><select id="student" name="student" ><option value="">Choisir un élève</option><?php
 
         $array_message = $DB->query("SELECT id, nom, prenom FROM profil WHERE rang = 1");
         $array_message = $array_message->fetchAll();
@@ -41,7 +41,7 @@ include ('../modele/connectDB.php');
                     ?></select></td>
         </tr>
         <tr>
-            <td>Matière :</td><td><select id="matiere"><option value="">Choisir une matière</option><?php
+            <td>Matière :</td><td><select id="matiere" name="matiere" ><option value="">Choisir une matière</option><?php
 
                 $array_message = $DB->query("SELECT idMatiere, nomMatiere FROM matiere");
                 $array_message = $array_message->fetchAll();
@@ -57,42 +57,74 @@ include ('../modele/connectDB.php');
             <td>Nom de la note :</td><td><input name="namenote" id="namenote" type="text" /></td>
         </tr>
         <tr>
-            <td></td><td><input name="entergrade" id="entergrade" type="submit" /></td>
+            <td></td><td><button name="entergrade" id="entergrade" type="submit" >Envoyer la note</button></td>
         </tr>
     </table>
 </form>
 <?php
 
-if (!isset($_POST['student']) && !isset($_POST['matiere']) && !isset($_POST['note']) && !isset($_POST['namenote'])) {
-    $errorstudent = $_POST['student'];
-    $errormatiere = $_POST['matiere'];
-    $errornote = $_POST['note'];
-    $errornamenote = $_POST['namenote'];
-    if (empty($_POST['student'])) {
-        echo "<p class=\"red\">ERREUR : Choisir un élève !</p>";
-    } elseif (empty($_POST['matiere'])) {
-        echo "<p class=\"red\">ERREUR : Choisir une matière !</p>";
-    } elseif (empty($_POST['note'])) {
-        echo "<p class=\"red\">ERREUR : Entrez une note !</p>";
-    } elseif (empty($_POST['namenote'])) {
-        echo "<p class=\"red\">ERREUR : Entrez un nom de note !</p>";
-    }
-} else {
-    $note = $_POST['note'];
-    $namenote = $_POST['namenote'];
-    $id = $bn['id'];
-    $matiere = $an['idMatiere'];
-        try {
-            $DB->insert("INSERT INTO note(idProfil, idMatiere, note, nomNote) VALUES('" . $bn['id'] . "','" . $an['idMatiere'] . "','" . $note . "','" . $namenote . "')");
-            echo "Note envoyée";
-        } catch (Exception $bdd) {
-            die('Erreur : ' . $bdd->getMessage());
+if (isset($_POST['entergrade'])) {
+        $errorstudent = $_POST['student'];
+        $errormatiere = $_POST['matiere'];
+        $errornote = $_POST['note'];
+        $errornamenote = $_POST['namenote'];
+        if (empty($_POST['student'])) {
+            echo "<p class=\"red\">ERREUR : Choisir un élève !</p>";
+        }if (empty($_POST['matiere'])) {
+            echo "<p class=\"red\">ERREUR : Choisir une matière !</p>";
+        }if (empty($_POST['note'])) {
+            echo "<p class=\"red\">ERREUR : Entrez une note !</p>";
+        }if (empty($_POST['namenote'])) {
+            echo "<p class=\"red\">ERREUR : Entrez un nom de note !</p>";
+        }if(!empty($_POST['student'])&& !empty($_POST['matiere'])&& !empty($_POST['note'])&& !empty($_POST['namenote'])) {
+            $note = $_POST['note'];
+            //echo "note = ".$note;
+            $namenote = $_POST['namenote'];
+            //echo "<br>nom de la note :".$namenote;
+            $id = $bn['id'];
+            //echo "<br>id = ".$id;
+            $matiere = $an['idMatiere'];
+            //echo "<br>Matière = ".$matiere;
+            try {
+                $DB->insert("INSERT INTO note(idProfil, idMatiere, note, nomNote) VALUES('" . $bn['id'] . "','" . $an['idMatiere'] . "','" . $note . "','" . $namenote . "')");
+                echo "Note envoyée";
+            } catch (Exception $bdd) {
+                die('Erreur : ' . $bdd->getMessage());
+            }
         }
-    }
+}
+
 
 ?>
 
-<?php
-include "footer.inc.php";
-?>
+<footer class="page-footer font-small grey pt-4" style="position:absolute!important;width: 100%">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-12 mt-md-0 mt-3">
+
+                <!-- Content -->
+                <h5 class="text-uppercase">Contact</h5>
+                <p>Mail : bulletin@gmail.fr</p>
+
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="mailto:bulletin@gmail.fr"> bulletin@gmail.fr</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
 </body>
