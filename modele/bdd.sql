@@ -1,28 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1
--- Généré le :  ven. 10 mai 2019 à 17:04
--- Version du serveur :  10.1.30-MariaDB
--- Version de PHP :  7.2.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données :  `ppe`
---
-
--- --------------------------------------------------------
 
 --
 -- Structure de la table `bulletin`
@@ -31,11 +6,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `bulletin` (
   `idProfil` int(11) NOT NULL,
   `idNote` int(11) NOT NULL,
-  `idMatiere` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idMatiere` int(11) NOT NULL,
+  PRIMARY KEY(idProfil));
 
 --
--- Déchargement des données de la table `bulletin`
+-- Contenu de la table `bulletin`
 --
 
 INSERT INTO `bulletin` (`idProfil`, `idNote`, `idMatiere`) VALUES
@@ -50,11 +25,11 @@ INSERT INTO `bulletin` (`idProfil`, `idNote`, `idMatiere`) VALUES
 CREATE TABLE `matiere` (
   `idMatiere` int(11) NOT NULL,
   `nomMatiere` varchar(255) NOT NULL,
-  `coef` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `coef` int(11) NOT NULL,
+  PRIMARY KEY(idMatiere));
 
 --
--- Déchargement des données de la table `matiere`
+-- Contenu de la table `matiere`
 --
 
 INSERT INTO `matiere` (`idMatiere`, `nomMatiere`, `coef`) VALUES
@@ -71,11 +46,11 @@ CREATE TABLE `note` (
   `idProfil` int(11) NOT NULL,
   `idNote` int(11) NOT NULL,
   `note` int(11) NOT NULL,
-  `idMatiere` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idMatiere` int(11) NOT NULL,
+  PRIMARY KEY(idNote));
 
 --
--- Déchargement des données de la table `note`
+-- Contenu de la table `note`
 --
 
 INSERT INTO `note` (`idProfil`, `idNote`, `note`, `idMatiere`) VALUES
@@ -93,7 +68,7 @@ INSERT INTO `note` (`idProfil`, `idNote`, `note`, `idMatiere`) VALUES
 --
 
 CREATE TABLE `profil` (
-  `id` int(255) UNSIGNED NOT NULL,
+  `id` int(11) NOT NULL,
   `login` text NOT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL,
@@ -101,19 +76,22 @@ CREATE TABLE `profil` (
   `mdp` text,
   `classe` varchar(60) DEFAULT NULL,
   `rang` int(10) NOT NULL,
-  `date_creation` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=ucs2;
+  `date_creation` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY(id)
+);
 
 --
--- Déchargement des données de la table `profil`
+-- Contenu de la table `profil`
 --
 
 INSERT INTO `profil` (`id`, `login`, `nom`, `prenom`, `mail`, `mdp`, `classe`, `rang`, `date_creation`) VALUES
-(9, 'ITLK', 'lo', 'lo', 'mpmpm@gmail.com', 'unvE13nwuFwf6', 'SIO', 2, '2019-05-05 18:14:13'),
 (17, 'admin', 'Leard', 'Thomas', 'tleard@gmail.com', 'un0JWpJYzcQl2', 'SIO', 3, '2019-05-08 18:18:37'),
 (18, 'pseudo', 'Lucas', 'Holderith', 'lklk@gmail.com', 'uneDM4EMOsDUc', 'SIO', 2, '2019-05-08 18:30:42'),
 (19, 'Beteta', 'Stephane', 'Beteta', 'beteta@gmail.com', 'unKI2Nce1vHag', NULL, 2, '2019-05-08 19:10:14'),
-(20, 'Dylan', 'Martin', 'Dylan', 'mlml@gmail.com', 'unKI2Nce1vHag', 'SIO', 1, '2019-05-09 08:09:24');
+(20, 'Dylan', 'Martin', 'Dylan', 'mlml@gmail.com', 'unKI2Nce1vHag', 'SIO', 1, '2019-05-09 08:09:24'),
+(21, 'blt', 'azerty', 'azerty', 'azerty@gmail.com', 'un5uIavn93MyM', 'SIO', 2, '2019-05-10 16:58:31'),
+(22, 'Belette', 'Martin', 'Dylan', 'coucou@gmail.com', 'un5uIavn93MyM', 'SIO', 1, '2019-05-10 16:59:35'),
+(23, 'Jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'un5uIavn93MyM', 'GMPE', 1, '2019-05-22 13:36:05');
 
 -- --------------------------------------------------------
 
@@ -123,75 +101,34 @@ INSERT INTO `profil` (`id`, `login`, `nom`, `prenom`, `mail`, `mdp`, `classe`, `
 
 CREATE TABLE `referent` (
   `idProfil` int(11) NOT NULL,
-  `idMatiere` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `bulletin`
---
-ALTER TABLE `bulletin`
-  ADD PRIMARY KEY (`idProfil`,`idNote`),
-  ADD KEY `idNote` (`idNote`),
-  ADD KEY `idMatiere` (`idMatiere`);
-
---
--- Index pour la table `matiere`
---
-ALTER TABLE `matiere`
-  ADD PRIMARY KEY (`idMatiere`);
-
---
--- Index pour la table `note`
---
-ALTER TABLE `note`
-  ADD PRIMARY KEY (`idNote`),
-  ADD KEY `matiere` (`idMatiere`),
-  ADD KEY `idMatiere` (`idMatiere`),
-  ADD KEY `idMatiere_2` (`idMatiere`),
-  ADD KEY `idMatiere_3` (`idMatiere`),
-  ADD KEY `id` (`idProfil`);
-
---
--- Index pour la table `profil`
---
-ALTER TABLE `profil`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `mail` (`mail`);
-
---
--- Index pour la table `referent`
---
-ALTER TABLE `referent`
-  ADD PRIMARY KEY (`idProfil`,`idMatiere`),
-  ADD KEY `idMatiere` (`idMatiere`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
+  `idMatiere` int(11) NOT NULL,
+  PRIMARY KEY(idProfil)
+);
 
 --
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
   MODIFY `idMatiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT pour la table `note`
 --
 ALTER TABLE `note`
   MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT pour la table `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE note
+    ADD CONSTRAINT FK_note_idProfil FOREIGN KEY(idProfil) REFERENCES profil(id);
+    
+ALTER TABLE note
+    ADD CONSTRAINT FK_note_idMatiere FOREIGN KEY(idMatiere) REFERENCES matiere(idMatiere);
+    
+ALTER TABLE referent
+    ADD CONSTRAINT FK_referent_idProfil FOREIGN KEY(idProfil) REFERENCES profil(id);
+    
+ALTER TABLE referent
+    ADD CONSTRAINT FK_bulletin_idMatiere FOREIGN KEY(idMatiere) REFERENCES matiere(idMatiere);

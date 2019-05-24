@@ -12,8 +12,9 @@
     <?php
         if (isset($_SESSION['id'])){
             include "connect.php";
-        }else
-            include 'formlogin.php'
+        }else {
+            header("Location: login.php");
+        }
     ?>
     <?php
     include "footer.inc.php"
