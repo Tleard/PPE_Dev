@@ -193,7 +193,7 @@ if(!empty($_POST)){
         <select id="section-select" class="form-control" name="section">
             <option value="">--Section--</option>
             <option value="SIO">SIO</option>
-            <option value="GMPE">GMPE</option>
+            <option value="GPME">GPME</option>
             <option value="MUC">MUC</option>
         </select>
         <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">

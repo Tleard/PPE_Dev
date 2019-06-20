@@ -1,54 +1,119 @@
 <?php
-session_start();
 include ('../modele/connectDB.php');
 ?>
 
 <?php
 include ('header.inc.php');
 ?>
-    <?php
-    /*$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
-                    from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
-                    WHERE profil.id = ?", array($_SESSION['id']));
-    $array_notes = $array_notes->fetchAll();*/
-    ?>
-    <!--Matiere Specifique requette-->
-    <?php
-        $array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
-                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
-                        WHERE profil.id = ?", array($_SESSION['id']));
-        $array_notes = $array_notes->fetchAll();
-    ?>
         <h1 class="text-center">Affichage des notes</h1></>
         <section>
             <h2 class="text-center">Année 2018/2019</h2>
 
             <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
-                <tr>
-                    <th class="th-sm">Nom matiére</th>
-                    <th class="th-sm">Notes</th>
-                    <th class="th-sm">Moyenne</th>
-                </tr>
+		            <tr>
+		                <th class="th-sm">Nom matiére</th>
+		                <th class="th-sm">Notes</th>
+		                <!--<th class="th-sm">Moyenne</th>-->
+		            </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <?php
-                    /** Si les notes ont le même Id l'insérér dans une string commune,
-                     * Determiner le nombre de string néccésaires avec un parseur qui fait toutes les notes
-                     */
-
-                    /**
-                     * Determine le nombre de matiére pour l'affichage
-                     */
-                    foreach($array_notes as $an) {
-                        echo "<tr> <td>" . $an['nomMatiere'] . "</td>";
-                        echo "<td>" . $an['note'] . "</td>";
-                        echo "<td>" . $an['note'] . "</td>";
-                        echo "</tr>";
-                    }
-                    ?>
+                    <td>Maths</td>
+                    <td>
+                    	<?php
+                    		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                        WHERE profil.id = ? AND matiere.idMatiere = 1", array($_SESSION['id']));
+        					$array_notes = $array_notes->fetchAll();
+        					foreach($array_notes as $an) {
+        						echo $an['note']." ,";
+        					}
+                    	?>
+                    </td>
                 </tr>
+                <tr>
+                    <td>Français</td>
+                    <td>
+                    	<?php
+                    		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                        WHERE profil.id = ? AND matiere.idMatiere = 2", array($_SESSION['id']));
+        					$array_notes = $array_notes->fetchAll();
+        					foreach($array_notes as $an) {
+        						echo $an['note']." ,";
+        					}
+                    	?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Anglais</td>
+                    <td>
+                    	<?php
+                    		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                        WHERE profil.id = ? AND matiere.idMatiere = 3", array($_SESSION['id']));
+        					$array_notes = $array_notes->fetchAll();
+        					foreach($array_notes as $an) {
+        						echo $an['note']." ,";
+        					}
+                    	?>
+                    </td>
+                </tr>
+                <?php
+                	if($_SESSION['classe'] == "SIO")
+                	{
+                	echo"
+                	<tr>
+                    <td>Informatique</td>
+                    <td>";
+                    		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                        WHERE profil.id = ? AND matiere.idMatiere = 4", array($_SESSION['id']));
+        					$array_notes = $array_notes->fetchAll();
+        					foreach($array_notes as $an) {
+        						echo $an['note']." ,";
+        					}
+                    	echo"</td>
+                </tr>";}?>
+                <?php
+                	if($_SESSION['classe'] == "GPME")
+                	{
+                	echo"
+                	<tr>
+                    <td>Gestion</td>
+                    <td>";
+                    		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                        WHERE profil.id = ? AND matiere.idMatiere = 5", array($_SESSION['id']));
+        					$array_notes = $array_notes->fetchAll();
+        					foreach($array_notes as $an) {
+        						echo $an['note']." ,";
+        					}
+                    	
+                    echo"</td>
+                </tr>";}?>
+                <?php
+                	if($_SESSION['classe'] == "MUC")
+                	{
+                	echo"
+                	<tr>
+                    <td>Comptabilité</td>
+                    <td>";
+                    
+                    		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                        WHERE profil.id = ? AND matiere.idMatiere = 6", array($_SESSION['id']));
+        					$array_notes = $array_notes->fetchAll();
+        					foreach($array_notes as $an) {
+        						echo $an['note']." ,";
+        					}
+                    	
+                    echo"</td>
+                </tr>";
+                	}
+                ?>
+
                 </tbody>
             </table>
         </section>
