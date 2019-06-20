@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Ven 24 Mai 2019 à 14:02
+-- Généré le :  Lun 10 Juin 2019 à 15:42
 -- Version du serveur :  5.7.26-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.17-0ubuntu0.18.04.1
 
@@ -56,8 +56,9 @@ CREATE TABLE `matiere` (
 --
 
 INSERT INTO `matiere` (`idMatiere`, `nomMatiere`, `coef`) VALUES
-(1, 'maths', 2),
-(2, 'Fançais', 2);
+(1, 'Maths', 2),
+(2, 'Fançais', 2),
+(3, 'Anglais', 2);
 
 -- --------------------------------------------------------
 
@@ -82,13 +83,17 @@ INSERT INTO `note` (`idProfil`, `idNote`, `note`, `idMatiere`, `nomNote`) VALUES
 (17, 2, 14, 1, ''),
 (20, 3, 16, 1, ''),
 (17, 4, 14, 2, ''),
-(20, 5, 16, 2, ''),
-(20, 6, 12, 2, ''),
-(20, 7, 12, 1, 'une banane'),
+(17, 5, 16, 2, ''),
+(17, 6, 12, 2, ''),
+(17, 7, 12, 1, 'une banane'),
 (23, 8, 12, 2, 'Cheville'),
 (23, 9, 14, 2, 'iqgsgqiufgqiufguiq'),
 (23, 10, 3, 2, 'La noteuh'),
-(23, 11, 13, 2, 'Gnégné');
+(23, 11, 13, 2, 'Gnégné'),
+(17, 12, 12, 2, 'Oui'),
+(17, 13, 9, 1, 'AZ'),
+(17, 14, 20, 3, ''),
+(25, 15, 12, 3, 'Une note');
 
 -- --------------------------------------------------------
 
@@ -119,7 +124,9 @@ INSERT INTO `profil` (`id`, `login`, `nom`, `prenom`, `mail`, `mdp`, `classe`, `
 (20, 'Dylan', 'Martin', 'Dylan', 'mlml@gmail.com', 'unKI2Nce1vHag', 'SIO', 1, '2019-05-09 08:09:24'),
 (21, 'blt', 'azerty', 'azerty', 'azerty@gmail.com', 'un5uIavn93MyM', 'SIO', 2, '2019-05-10 16:58:31'),
 (22, 'Belette', 'Martin', 'Dylan', 'coucou@gmail.com', 'un5uIavn93MyM', 'SIO', 1, '2019-05-10 16:59:35'),
-(23, 'Jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'un5uIavn93MyM', 'GMPE', 1, '2019-05-22 13:36:05');
+(23, 'Jojo', 'jojo', 'jojo', 'jojo@gmail.com', 'un5uIavn93MyM', 'GMPE', 1, '2019-05-22 13:36:05'),
+(24, 'prof', 'Beteta', 'Stephane', 'email@mail.com', 'uncrs9RGcniWU', NULL, 2, '2019-06-10 14:09:26'),
+(25, 'eleve', 'Coco', 'Lasticot', 'merlin@gmail.com', 'unLbdoR8W.4Bk', 'SIO', 1, '2019-06-10 14:12:11');
 
 -- --------------------------------------------------------
 
@@ -177,17 +184,17 @@ ALTER TABLE `referent`
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `idMatiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idMatiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `note`
 --
 ALTER TABLE `note`
-  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT pour la table `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- Contraintes pour les tables exportées
 --

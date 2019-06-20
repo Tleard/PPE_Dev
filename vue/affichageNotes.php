@@ -14,10 +14,9 @@ include ('header.inc.php');
     ?>
     <!--Matiere Specifique requette-->
     <?php
-        $id_matiere = 1;
         $array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
                         from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
-                        WHERE profil.id = ? AND matiere.idMatiere = ?", array($_SESSION['id'], $id_matiere));
+                        WHERE profil.id = ?", array($_SESSION['id']));
         $array_notes = $array_notes->fetchAll();
     ?>
         <h1 class="text-center">Affichage des notes</h1></>
@@ -43,27 +42,11 @@ include ('header.inc.php');
                      * Determine le nombre de matiére pour l'affichage
                      */
                     foreach($array_notes as $an) {
-                        $id_matiere = 1;
-                        $tem = $an['idMatiere'];
-                        if ($tem = $an['idMatiere'])
-                        {
-                            $nb_matiere = $nb_matiere + 1;
-                            $tem = $an['idMatiere'];
-                        }
-                        while ($id_matiere < $nb_matiere)
-                        {
-                                if ($id_matiere == $an['idMatiere'])
-                                {
-                                    echo($an['idMatiere']);
-                                    echo "<tr> <td>" . $an['nomMatiere'] . "</td>";
-                                    echo "<td>" . $an['note'] . "</td>";
-                                    echo "<td>" . $an['note'] . "</td>";
-                                    echo "</tr>";
-                                    $id_matiere++;
-                                }
-                        }
+                        echo "<tr> <td>" . $an['nomMatiere'] . "</td>";
+                        echo "<td>" . $an['note'] . "</td>";
+                        echo "<td>" . $an['note'] . "</td>";
+                        echo "</tr>";
                     }
-
                     ?>
                 </tr>
                 </tbody>

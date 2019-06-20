@@ -114,56 +114,156 @@ if(!empty($_POST)){
     <title>Inscription</title>
 </head>
 <body>
-<form method="post">
-    <?php
-    if (isset($error_login)){
-        ?>
-        <div><?= $error_login ?></div>
+
+<!-- Default form register -->
+<div class="container">
+    <form class="text-center border border-light p-5" method="post">
+
+        <p class="h4 mb-4">Créer un compte</p>
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <?php
+                if (isset($error_prenom)){
+                    ?>
+                    <div><?= $error_prenom ?></div>
+                    <?php
+                }
+                ?>
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" required>
+            </div>
+            <div class="col">
+                <!-- Last name -->
+                <?php
+                if (isset($error_nom)){
+                    ?>
+                    <div><?= $error_nom ?></div>
+                    <?php
+                }
+                ?>
+                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" required>
+            </div>
+        </div>
+
         <?php
-    }
-    ?>
-    <input type="text" placeholder="Pseudo" name="login" value="<?php if(isset($login)){ echo $login; }?>" required>
-    <?php
-    if (isset($error_nom)){
+        if (isset($error_login)){
+            ?>
+            <div><?= $error_login ?></div>
+            <?php
+        }
         ?>
-        <div><?= $error_nom ?></div>
+        <input type="text" placeholder="Pseudo" id="defaultRegisterFormPseudo" class="form-control mb-4" name="login" value="<?php if(isset($login)){ echo $login; }?>" required>
+
         <?php
-    }
-    ?>
-    <input type="text" placeholder="Votre nom" name="nom" value="<?php if(isset($nom)){ echo $nom; }?>" required>
-    <?php
-    if (isset($error_prenom)){
+        if (isset($error_mail)){
+            ?>
+            <div><?= $error_mail ?></div>
+            <?php
+        }
         ?>
-        <div><?= $error_prenom ?></div>
+        <input type="email" placeholder="Adresse mail" id="defaultRegisterFormEmail" class="form-control mb-4" name="mail" value="<?php if(isset($mail)){ echo $mail; }?>" required>
+
+        <!-- Password -->
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <?php
+                if (isset($error_mdp)){
+                    ?>
+                    <div><?= $error_mdp ?></div>
+                    <?php
+                }
+                ?>
+                <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
+            </div>
+            <div class="col">
+                <!-- Last name -->
+                <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Confirmer le mot de passe" name="confmdp" required>
+            </div>
+        </div>
+
         <?php
-    }
-    ?>
-    <input type="text" placeholder="Votre prénom" name="prenom" value="<?php if(isset($prenom)){ echo $prenom; }?>" required>
-    <?php
-    if (isset($error_mail)){
+        if (isset($error_section)){
+            ?>
+            <div><?= $error_section ?></div>
+            <?php
+        }
         ?>
-        <div><?= $error_mail ?></div>
-        <?php
-    }
-    ?>
-    <input type="email" placeholder="Adresse mail" name="mail" value="<?php if(isset($mail)){ echo $mail; }?>" required>
+        <label for="section-select">Entrer votre section:</label>
+        <select id="section-select" class="form-control" name="section">
+            <option value="">--Section--</option>
+            <option value="SIO">SIO</option>
+            <option value="GMPE">GMPE</option>
+            <option value="MUC">MUC</option>
+        </select>
+        <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+            Optionnelle
+        </small>
+
+
+
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="teacher" id="teacher">
+            <label class="custom-control-label" for="teacher">Je suis un Professeur :</label>
+        </div>
+
+
+        <button class="btn btn-info my-4 btn-block" type="submit" name="inscription">Envoyer</button>
+
+    </form>
+</div>
+
+
+<!--<form method="post">
     <?php
-    if (isset($error_mdp)){
-        ?>
-        <div><?= $error_mdp ?></div>
+/*    if (isset($error_login)){
+        */?>
+        <div><?/*= $error_login */?></div>
         <?php
-    }
-    ?>
-    <input type="password" placeholder="Mot de passe" name="mdp" value="<?php if(isset($mdp)){ echo $mdp; }?>" required>
+/*    }
+    */?>
+    <input type="text" placeholder="Pseudo" name="login" value="<?php /*if(isset($login)){ echo $login; }*/?>" required>
+    <?php
+/*    if (isset($error_nom)){
+        */?>
+        <div><?/*= $error_nom */?></div>
+        <?php
+/*    }
+    */?>
+    <input type="text" placeholder="Votre nom" name="nom" value="<?php /*if(isset($nom)){ echo $nom; }*/?>" required>
+    <?php
+/*    if (isset($error_prenom)){
+        */?>
+        <div><?/*= $error_prenom */?></div>
+        <?php
+/*    }
+    */?>
+    <input type="text" placeholder="Votre prénom" name="prenom" value="<?php /*if(isset($prenom)){ echo $prenom; }*/?>" required>
+    <?php
+/*    if (isset($error_mail)){
+        */?>
+        <div><?/*= $error_mail */?></div>
+        <?php
+/*    }
+    */?>
+    <input type="email" placeholder="Adresse mail" name="mail" value="<?php /*if(isset($mail)){ echo $mail; }*/?>" required>
+    <?php
+/*    if (isset($error_mdp)){
+        */?>
+        <div><?/*= $error_mdp */?></div>
+        <?php
+/*    }
+    */?>
+    <input type="password" placeholder="Mot de passe" name="mdp" value="<?php /*if(isset($mdp)){ echo $mdp; }*/?>" required>
     <input type="password" placeholder="Confirmer le mot de passe" name="confmdp" required>
 
     <?php
-    if (isset($error_section)){
-        ?>
-        <div><?= $error_section ?></div>
+/*    if (isset($error_section)){
+        */?>
+        <div><?/*= $error_section */?></div>
         <?php
-    }
-    ?>
+/*    }
+    */?>
     <label for="section-select">Entrer votre section:</label>
     <select id="section-select" name="section">
         <option value="">--Section--</option>
@@ -176,6 +276,6 @@ if(!empty($_POST)){
     <input type="checkbox" name="teacher" id="teacher">
     
     <button type="submit" name="inscription">Envoyer</button>
-</form>
+</form>-->
 </body>
 </html>
