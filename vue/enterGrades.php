@@ -28,27 +28,29 @@ include ('../modele/connectDB.php');
     }
 ?>
 <h1>Entrez une note à un élève</h1>
-<form action="enterGrades.php" method="post">
+<form method="post">
     <table class="center">
         <tr>
-            <td>Choisir l'élève :</td><td><select id="student" name="student" ><option value="">Choisir un élève</option><?php
-
-        $array_message = $DB->query("SELECT id, nom, prenom FROM profil WHERE rang = 1");
-        $array_message = $array_message->fetchAll();
-        foreach($array_message as $bn) {
-            echo"<option value='".$bn['id']."'>".$bn['nom'].$bn['prenom']."</option>";
-        }
-                    ?></select></td>
+            <td>Choisir l'élève :</td><td><select id="student" name="student" ><option value="">Choisir un élève</option>
+                <?php
+                $array_message = $DB->query("SELECT id, nom, prenom FROM profil WHERE rang = 1");
+                $array_message = $array_message->fetchAll();
+                foreach($array_message as $bn) {
+                    echo"<option value='".$bn['id']."'>".$bn['nom'].' '.$bn['prenom']."</option>";
+                }
+                ?>
+        </select></td>
         </tr>
         <tr>
-            <td>Matière :</td><td><select id="matiere" name="matiere" ><option value="">Choisir une matière</option><?php
-
+            <td>Matière :</td><td><select id="matiere" name="matiere" ><option value="">Choisir une matière</option>
+                <?php
                 $array_message = $DB->query("SELECT idMatiere, nomMatiere FROM matiere");
                 $array_message = $array_message->fetchAll();
                 foreach($array_message as $an) {
                     echo"<option value='".$an['idMatiere']."'>".$an['nomMatiere']."</option>";
                 }
-                    ?></select></td>
+                    ?>
+                </select></td>
         </tr>
         <tr>
             <td>Note sur 20 :</td><td><input name="note" id="note" type="number" min="0" max="20"/></td>
@@ -60,6 +62,9 @@ include ('../modele/connectDB.php');
             <td></td><td><button name="entergrade" id="entergrade" type="submit" >Envoyer la note</button></td>
         </tr>
     </table>
+    <?php
+    echo $_POST['entergrade'];
+    ?>
 </form>
 <?php
 
@@ -78,13 +83,13 @@ if (isset($_POST['entergrade'])) {
             echo "<p class=\"red\">ERREUR : Entrez un nom de note !</p>";
         }if(!empty($_POST['student'])&& !empty($_POST['matiere'])&& !empty($_POST['note'])&& !empty($_POST['namenote'])) {
             $note = $_POST['note'];
-            //echo "note = ".$note;
+            echo "note = ".$note;
             $namenote = $_POST['namenote'];
-            //echo "<br>nom de la note :".$namenote;
-            $id = $bn['id'];
-            //echo "<br>id = ".$id;
-            $matiere = $an['idMatiere'];
-            //echo "<br>Matière = ".$matiere;
+            echo "<br>nom de la note :".$namenote;
+            $id = $_POST['student'];
+            echo "<br>id = ".$id;
+            $matiere = $_POST['matiere'];
+            echo "<br>Matière = ".$matiere;
             try {
                 $DB->insert("INSERT INTO note(idProfil, idMatiere, note, nomNote) VALUES('" . $bn['id'] . "','" . $an['idMatiere'] . "','" . $note . "','" . $namenote . "')");
                 echo "Note envoyée";
