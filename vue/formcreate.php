@@ -119,7 +119,7 @@ if(!empty($_POST)){
 <div class="container">
     <form class="text-center border border-light p-5" method="post">
 
-        <p class="h4 mb-4">Créer un compte</p>
+        <p class="h4 mb-4 text-center">Créer un compte</p>
 
         <div class="form-row mb-4">
             <div class="col">

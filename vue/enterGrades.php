@@ -62,9 +62,6 @@ include ('../modele/connectDB.php');
             <td></td><td><button name="entergrade" id="entergrade" type="submit" >Envoyer la note</button></td>
         </tr>
     </table>
-    <?php
-    echo $_POST['entergrade'];
-    ?>
 </form>
 <?php
 
