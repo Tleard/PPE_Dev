@@ -91,7 +91,7 @@ if (isset($_POST['entergrade'])) {
             $matiere = $_POST['matiere'];
             echo "<br>Matière = ".$matiere;
             try {
-                $DB->insert("INSERT INTO note(idProfil, idMatiere, note, nomNote) VALUES('" . $bn['id'] . "','" . $an['idMatiere'] . "','" . $note . "','" . $namenote . "')");
+                $DB->insert("INSERT INTO note(idProfil, idMatiere, note, nomNote) VALUES('" . $id . "','" . $matiere . "','" . $note . "','" . $namenote . "')");
                 echo "Note envoyée";
             } catch (Exception $bdd) {
                 die('Erreur : ' . $bdd->getMessage());
