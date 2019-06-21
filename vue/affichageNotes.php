@@ -14,7 +14,7 @@ include ('header.inc.php');
 		            <tr>
 		                <th class="th-sm">Nom matiére</th>
 		                <th class="th-sm">Notes</th>
-		                <!--<th class="th-sm">Moyenne</th>-->
+		                <th class="th-sm">Moyenne</th>
 		            </tr>
                 </thead>
                 <tbody>
@@ -31,6 +31,24 @@ include ('header.inc.php');
         					}
                     	?>
                     </td>
+                    <td>
+                        <?php
+                        $moyenne = 0;
+                        $total = 0;
+                        $array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                        WHERE profil.id = ? AND matiere.idMatiere = 1", array($_SESSION['id']));
+                        $array_notes = $array_notes->fetchAll();
+                        foreach($array_notes as $an) {
+                            /*echo $an['note']." ,";*/
+                            $moyenne = $moyenne + $an['note'];
+                            $total = $total +1;
+                        }
+                        $moyenne2 = substr($moyenne / $total,0 , 4);
+                        echo $moyenne2;
+                        ?>
+
+                    </td>
                 </tr>
                 <tr>
                     <td>Français</td>
@@ -44,6 +62,24 @@ include ('header.inc.php');
         						echo $an['note']." ,";
         					}
                     	?>
+                    </td>
+                    <td>
+                        <?php
+                        $moyenne = 0;
+                        $total = 0;
+                        $array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                        WHERE profil.id = ? AND matiere.idMatiere = 2", array($_SESSION['id']));
+                        $array_notes = $array_notes->fetchAll();
+                        foreach($array_notes as $an) {
+                            /*echo $an['note']." ,";*/
+                            $moyenne = $moyenne + $an['note'];
+                            $total = $total +1;
+                        }
+                        $moyenne2 = substr($moyenne / $total,0 , 4);
+                        echo $moyenne2;
+                        ?>
+
                     </td>
                 </tr>
                 <tr>
@@ -59,23 +95,63 @@ include ('header.inc.php');
         					}
                     	?>
                     </td>
+                    <td>
+                        <?php
+                        $moyenne = 0;
+                        $total = 0;
+                        $array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                        WHERE profil.id = ? AND matiere.idMatiere = 3", array($_SESSION['id']));
+                        $array_notes = $array_notes->fetchAll();
+                        foreach($array_notes as $an) {
+                            /*echo $an['note']." ,";*/
+                            $moyenne = $moyenne + $an['note'];
+                            $total = $total +1;
+                        }
+                        $moyenne2 = substr($moyenne / $total,0 , 4);
+                        echo $moyenne2;
+                        ?>
+
+                    </td>
                 </tr>
+
                 <?php
-                	if($_SESSION['classe'] == "SIO")
-                	{
-                	echo"
+                	if($_SESSION['classe'] == "SIO") {
+                        echo "
                 	<tr>
                     <td>Informatique</td>
                     <td>";
-                    		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                        $array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
                         from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
                         WHERE profil.id = ? AND matiere.idMatiere = 4", array($_SESSION['id']));
-        					$array_notes = $array_notes->fetchAll();
-        					foreach($array_notes as $an) {
-        						echo $an['note']." ,";
-        					}
-                    	echo"</td>
-                </tr>";}?>
+                        $array_notes = $array_notes->fetchAll();
+                        foreach ($array_notes as $an) {
+                            echo $an['note'] . " ,";
+                        }
+                        echo "</td>";
+                    }
+        					?>
+
+                    <?php
+                    if($_SESSION['classe'] == "SIO") {
+                        echo "<td>";
+                        $moyenne = 0;
+                        $total = 0;
+                        $array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                            from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                            WHERE profil.id = ? AND matiere.idMatiere = 4", array($_SESSION['id']));
+                        $array_notes = $array_notes->fetchAll();
+                        foreach ($array_notes as $an) {
+                            /*echo $an['note']." ,";*/
+                            $moyenne = $moyenne + $an['note'];
+                            $total = $total + 1;
+                        }
+                        $moyenne2 = substr($moyenne / $total, 0, 4);
+                        echo $moyenne2;
+                        echo "</td>";
+                    }
+                    ?>
+
                 <?php
                 	if($_SESSION['classe'] == "GPME")
                 	{
@@ -91,8 +167,27 @@ include ('header.inc.php');
         						echo $an['note']." ,";
         					}
                     	
-                    echo"</td>
-                </tr>";}?>
+                    echo"</td>";}?>
+                <?php
+                if($_SESSION['classe'] == "GPME") {
+                    echo "<td>";
+                    $moyenne = 0;
+                    $total = 0;
+                    $array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                            from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                            WHERE profil.id = ? AND matiere.idMatiere = 5", array($_SESSION['id']));
+                    $array_notes = $array_notes->fetchAll();
+                    foreach ($array_notes as $an) {
+                        /*echo $an['note']." ,";*/
+                        $moyenne = $moyenne + $an['note'];
+                        $total = $total + 1;
+                    }
+                    $moyenne2 = substr($moyenne / $total, 0, 4);
+                    echo $moyenne2;
+                    echo "</td>";
+                }
+                ?>
+
                 <?php
                 	if($_SESSION['classe'] == "MUC")
                 	{
@@ -109,9 +204,28 @@ include ('header.inc.php');
         						echo $an['note']." ,";
         					}
                     	
-                    echo"</td>
-                </tr>";
+                    echo"</td>";
                 	}
+                ?>
+
+                <?php
+                if($_SESSION['classe'] == "MUC") {
+                    echo "<td>";
+                    $moyenne = 0;
+                    $total = 0;
+                    $array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                            from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
+                            WHERE profil.id = ? AND matiere.idMatiere = 6", array($_SESSION['id']));
+                    $array_notes = $array_notes->fetchAll();
+                    foreach ($array_notes as $an) {
+                        /*echo $an['note']." ,";*/
+                        $moyenne = $moyenne + $an['note'];
+                        $total = $total + 1;
+                    }
+                    $moyenne2 = substr($moyenne / $total, 0, 4);
+                    echo $moyenne2;
+                    echo "</td>";
+                }
                 ?>
 
                 </tbody>
