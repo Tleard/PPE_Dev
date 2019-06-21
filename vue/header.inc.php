@@ -46,10 +46,7 @@
                     <a class="nav-link" href="enterGrades.php"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="affichageNotes.php">Mes notes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i>Contact</a>
+                    <a class="nav-link" href="affichageNotes.php"><i class="fas fa-graduation-cap"></i>Mes notes</a>
                 </li>
 
                 <?php
@@ -58,7 +55,7 @@
                     if ($rang == 3){
                         echo "
                         <li class=\"nav-item\">
-                            <a class=\"nav-link\" href=\"admin.php\">Admin</a>
+                            <a class=\"nav-link\" href=\"admin.php\"><i class=\"fas fa-user-cog\"></i>Admin</a>
                         </li>
                         ";
 
@@ -67,7 +64,7 @@
                     if ($rang == 2 || $rang == 0){
                         echo"
                         <li class=\"nav-item\">
-                            <a class=\"nav-link\" href=\"enterGrades.php\">Entrée des notes</a>
+                            <a class=\"nav-link\" href=\"enterGrades.php\"><i class=\"fas fa-edit\"></i>Entrée des notes</a>
                         </li>
                         ";
                     }
