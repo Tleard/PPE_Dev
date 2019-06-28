@@ -44,31 +44,32 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">  <h4 >Modifier vos informations</h4></div>
+                    <div class="panel-heading">
+                        <h4 style="margin-right: 45%">Modifier vos informations</h4>
+                    </div>
                     <div class="panel-body">
                         <div class="box box-info">
                             <div class="box-body">
                                 <div class="clearfix"></div>
-                                <hr style="margin:5px 0 5px 0;">
                                 <form method="post" action="../modele/update.php">
-                                    <div class="col-sm-5 col-xs-6 tital " >Changer votre nom d'utilisateur</div><div class="col-sm-7 col-xs-6 "><input name="newlogin" id="newlogin" type="text" /></div>
+                                    <div class="col-sm-7 col-xs-6 tital " >Changer votre nom d'utilisateur</div><div class="col-sm-7 col-xs-6 "><input name="newlogin" id="newlogin" type="text" /></div>
                                     <div class="clearfix"></div>
                                     <div class="bot-border"></div>
 
-                                    <div class="col-sm-5 col-xs-6 tital " >Changer votre adresse mail</div><div class="col-sm-7"><input name="newadress" id="newadress" type="text" /></div>
+                                    <div class="col-sm-7 col-xs-6 tital " >Changer votre adresse mail</div><div class="col-sm-7 col-xs-6"><input name="newadress" id="newadress" type="text" /></div>
                                     <div class="clearfix"></div>
                                     <div class="bot-border"></div>
 
-                                    <div class="col-sm-5 col-xs-6 tital " >Changer votre mot de passe</div><div class="col-sm-7"><input name="newpassword" id="newpassword" type="text" /></div>
+                                    <div class="col-sm-7 col-xs-6 tital " >Changer votre mot de passe</div><div class="col-sm-7 col-xs-6"><input name="newpassword" id="newpassword" type="text" /></div>
                                     <div class="clearfix"></div>
                                     <div class="bot-border"></div>
 
-                                    <div class="col-sm-5 col-xs-6 tital " >Vérifiez votre mot de passe</div><div class="col-sm-7"><input name="newpassword2" id="newpassword2" type="text" /></div>
+                                    <div class="col-sm-7 col-xs-6 tital " >Vérifiez votre mot de passe</div><div class="col-sm-7 col-xs-6"><input name="newpassword2" id="newpassword2" type="text" /></div>
 
                                     <div class="clearfix"></div>
                                     <div class="bot-border"></div>
 
-                                    <div class="col-sm-5 col-xs-6 tital " ></div><div class="col-sm-7"><input name="postchange" id="postchange" type="submit" /></div>
+                                    <div class="col-sm-5 col-xs-6 tital " ></div><div class="col-sm-7 col-xs-6"><input name="postchange" id="postchange" type="submit" /></div>
                                 </form>
                             </div>
                         </div>

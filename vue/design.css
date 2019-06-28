@@ -28,6 +28,11 @@ input.hidden {
     left: -9999px;
 }
 
+.title-index {
+    margin-right: 45%;
+
+}
+
 #profile-image1 {
     cursor: pointer;
 

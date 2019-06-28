@@ -70,37 +70,26 @@
                     }
                 }
 
-                ?>
+                if (isset($_SESSION['id'])){
 
-            </ul>
-            <ul class="navbar-nav ml-auto nav-flex-icons">
-                <?php
-
-                    if (isset($_SESSION['id'])){
-
-                        ?>
-
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" href="deconnexion.php">
-                                Deconnexion<i class="fas fa-sign-out-alt"></i>
-                            </a>
+                    echo"
+                        <li class=\"nav-item\">
+                            <a class=\"nav-link\" href=\"deconnexion.php\"><i class=\"fas fa-sign-out-alt\"></i>Deconnexion</a>
                         </li>
-                <?php
+                        ";
+
 
                     } else {
 
-                        ?>
-
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect waves-light" href="login.php">
-                                Connexion<i class="fas fa-sign-in-alt"></i>
-                            </a>
+                        echo"
+                        <li class=\"nav-item\">
+                            <a class=\"nav-link\" href=\"login.php\"><i class=\"fas fa-sign-in-alt\"></i>Connexion</a>
                         </li>
+                        ";
 
-
-                        <?php
                     }
                 ?>
+
             </ul>
         </div>
     </nav>

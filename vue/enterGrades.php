@@ -80,16 +80,15 @@ if (isset($_POST['entergrade'])) {
             echo "<p class=\"red\">ERREUR : Entrez un nom de note !</p>";
         }if(!empty($_POST['student'])&& !empty($_POST['matiere'])&& !empty($_POST['note'])&& !empty($_POST['namenote'])) {
             $note = $_POST['note'];
-            echo "note = ".$note;
             $namenote = $_POST['namenote'];
-            echo "<br>nom de la note :".$namenote;
             $id = $_POST['student'];
-            echo "<br>id = ".$id;
             $matiere = $_POST['matiere'];
-            echo "<br>Matière = ".$matiere;
             try {
                 $DB->insert("INSERT INTO note(idProfil, idMatiere, note, nomNote) VALUES('" . $id . "','" . $matiere . "','" . $note . "','" . $namenote . "')");
-                echo "Note envoyée";
+                echo "
+                <script type=text/javascript>
+                alert('Note envoyée')
+                </script>";
             } catch (Exception $bdd) {
                 die('Erreur : ' . $bdd->getMessage());
             }

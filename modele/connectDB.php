@@ -7,6 +7,15 @@ class connexionDB {
     private $pass    = 'operations';        // mot de passe
     private $connexion;
 
+    /* Regular Connexion :
+     *
+        private $host    = 'localhost';   // nom de l'host
+        private $name    = 'ppe';     // nom de la base de donnée
+        private $user    = 'PPE_dev';        // utilisateur
+        private $pass    = 'operations';        // mot de passe
+        private $connexion;
+     */
+
     function __construct($host = null, $name = null, $user = null, $pass = null){
         if($host != null){
             $this->host = $host;

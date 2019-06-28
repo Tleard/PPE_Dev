@@ -1,11 +1,38 @@
-Admin :
-admin
-admin
+------ Login PPE ------
 
-Prof:
-beteta
-lolo
 
-User:
-pseudo
-motdepasse
+----Admin :
+
+login : admin
+password : admin
+
+----Prof:
+
+login : prof1
+password : prof1
+
+login : prof2
+password : prof2
+
+login : prof3
+password : prof3
+
+----User:
+
+login : eleve1
+password : eleve1
+
+login : eleve2
+password : eleve2
+
+login : eleve3
+password : eleve3
+
+login : eleve4
+password : eleve4
+
+login : eleve5
+password : eleve5
+
+login : eleve6
+password : eleve6
