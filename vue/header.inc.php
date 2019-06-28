@@ -45,13 +45,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="enterGrades.php"></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="affichageNotes.php"><i class="fas fa-graduation-cap"></i>Mes notes</a>
-                </li>
 
                 <?php
                 if (isset($_SESSION['id'])){
                     $rang = $_SESSION['rang'];
+
+                    echo "<li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"affichageNotes.php\"><i class=\"fas fa-graduation-cap\"></i>Mes notes</a>
+                    </li>
+                    ";
+
                     if ($rang == 3){
                         echo "
                         <li class=\"nav-item\">
@@ -68,6 +71,7 @@
                         </li>
                         ";
                     }
+
                 }
 
                 if (isset($_SESSION['id'])){
