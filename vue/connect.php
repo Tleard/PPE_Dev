@@ -40,7 +40,7 @@
         </tr>
     </table>
     <br>
-    <div class="container" style="margin-left: 35%;">
+    <!--<div class="container" style="margin-left: 35%;">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <?php
         include "../modele/update.php"
     ?>

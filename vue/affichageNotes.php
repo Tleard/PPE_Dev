@@ -4,6 +4,19 @@ include ('../modele/connectDB.php');
 
 <?php
 include ('header.inc.php');
+
+if (isset($_SESSION['id'])) {
+    if ($_SESSION['rang'] == 3) {
+        echo "
+            <script type=text/javascript>
+            alert('Les admins ne possédent pas de notes.')
+            </script>
+            ";
+        header('index.php');
+
+    }
+}
+
 ?>
         <h1 class="text-center">Affichage des notes</h1></>
         <section>
@@ -22,12 +35,13 @@ include ('header.inc.php');
                     <td>Maths</td>
                     <td>
                     	<?php
-                    		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
+                    		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note, note.Nomnote
                         from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
                         WHERE profil.id = ? AND matiere.idMatiere = 1", array($_SESSION['id']));
         					$array_notes = $array_notes->fetchAll();
         					foreach($array_notes as $an) {
-        						echo $an['note']." ,";
+        						echo $an['note'] . '-';
+        						echo'(' .$an['Nomnote'] . ') ,' ;
         					}
                     	?>
                     </td>
@@ -40,7 +54,7 @@ include ('header.inc.php');
                         WHERE profil.id = ? AND matiere.idMatiere = 1", array($_SESSION['id']));
                         $array_notes = $array_notes->fetchAll();
                         foreach($array_notes as $an) {
-                            /*echo $an['note']." ,";*/
+                            /*echo $an['note'] . '-';*/
                             $moyenne = $moyenne + $an['note'];
                             $total = $total +1;
                         }
@@ -59,8 +73,15 @@ include ('header.inc.php');
                         WHERE profil.id = ? AND matiere.idMatiere = 2", array($_SESSION['id']));
         					$array_notes = $array_notes->fetchAll();
         					foreach($array_notes as $an) {
-        						echo $an['note']." ,";
-        					}
+        						echo $an['note'] . '-';
+        						if ($an['Nomnote'] != NULL)
+                                {
+                                    if ($an['Nomnote'] != NULL)
+                                {
+                                    echo'(' .$an['Nomnote'] . ') ,' ;
+                                }
+                                }
+                            }
                     	?>
                     </td>
                     <td>
@@ -72,7 +93,7 @@ include ('header.inc.php');
                         WHERE profil.id = ? AND matiere.idMatiere = 2", array($_SESSION['id']));
                         $array_notes = $array_notes->fetchAll();
                         foreach($array_notes as $an) {
-                            /*echo $an['note']." ,";*/
+                            /*echo $an['note'] . '-';*/
                             $moyenne = $moyenne + $an['note'];
                             $total = $total +1;
                         }
@@ -91,8 +112,13 @@ include ('header.inc.php');
                         WHERE profil.id = ? AND matiere.idMatiere = 3", array($_SESSION['id']));
         					$array_notes = $array_notes->fetchAll();
         					foreach($array_notes as $an) {
-        						echo $an['note']." ,";
-        					}
+        						echo $an['note'] . '-';
+                                if ($an['Nomnote'] != NULL)
+                                {
+                                    echo'(' .$an['Nomnote'] . ') ,' ;
+                                }
+
+                            }
                     	?>
                     </td>
                     <td>
@@ -104,7 +130,7 @@ include ('header.inc.php');
                         WHERE profil.id = ? AND matiere.idMatiere = 3", array($_SESSION['id']));
                         $array_notes = $array_notes->fetchAll();
                         foreach($array_notes as $an) {
-                            /*echo $an['note']." ,";*/
+                            /*echo $an['note'] . '-';*/
                             $moyenne = $moyenne + $an['note'];
                             $total = $total +1;
                         }
@@ -126,7 +152,11 @@ include ('header.inc.php');
                         WHERE profil.id = ? AND matiere.idMatiere = 4", array($_SESSION['id']));
                         $array_notes = $array_notes->fetchAll();
                         foreach ($array_notes as $an) {
-                            echo $an['note'] . " ,";
+                            echo $an['note'] . '-';;
+                            if ($an['Nomnote'] != NULL)
+                                {
+                                    echo'(' .$an['Nomnote'] . ') ,' ;
+                                }
                         }
                         echo "</td>";
                     }
@@ -142,7 +172,7 @@ include ('header.inc.php');
                             WHERE profil.id = ? AND matiere.idMatiere = 4", array($_SESSION['id']));
                         $array_notes = $array_notes->fetchAll();
                         foreach ($array_notes as $an) {
-                            /*echo $an['note']." ,";*/
+                            /*echo $an['note'] . '-';*/
                             $moyenne = $moyenne + $an['note'];
                             $total = $total + 1;
                         }
@@ -164,9 +194,13 @@ include ('header.inc.php');
                         WHERE profil.id = ? AND matiere.idMatiere = 5", array($_SESSION['id']));
         					$array_notes = $array_notes->fetchAll();
         					foreach($array_notes as $an) {
-        						echo $an['note']." ,";
+        						echo $an['note'] . '-';
+                                if ($an['Nomnote'] != NULL)
+                                {
+                                    echo'(' .$an['Nomnote'] . ') ,' ;
+                                }
         					}
-                    	
+
                     echo"</td>";}?>
                 <?php
                 if($_SESSION['classe'] == "GPME") {
@@ -178,7 +212,7 @@ include ('header.inc.php');
                             WHERE profil.id = ? AND matiere.idMatiere = 5", array($_SESSION['id']));
                     $array_notes = $array_notes->fetchAll();
                     foreach ($array_notes as $an) {
-                        /*echo $an['note']." ,";*/
+                        /*echo $an['note'] . '-';*/
                         $moyenne = $moyenne + $an['note'];
                         $total = $total + 1;
                     }
@@ -195,15 +229,19 @@ include ('header.inc.php');
                 	<tr>
                     <td>Comptabilité</td>
                     <td>";
-                    
+
                     		$array_notes = $DB->query("SELECT matiere.idMatiere, matiere.nomMatiere, note.note
                         from matiere INNER JOIN note on matiere.idMatiere = note.idMatiere INNER JOIN profil ON note.idProfil = profil.id
                         WHERE profil.id = ? AND matiere.idMatiere = 6", array($_SESSION['id']));
         					$array_notes = $array_notes->fetchAll();
         					foreach($array_notes as $an) {
-        						echo $an['note']." ,";
+        						echo $an['note'] . '-';
+                                if ($an['Nomnote'] != NULL)
+                                {
+                                    echo'(' .$an['Nomnote'] . ') ,' ;
+                                }
         					}
-                    	
+
                     echo"</td>";
                 	}
                 ?>
@@ -218,7 +256,7 @@ include ('header.inc.php');
                             WHERE profil.id = ? AND matiere.idMatiere = 6", array($_SESSION['id']));
                     $array_notes = $array_notes->fetchAll();
                     foreach ($array_notes as $an) {
-                        /*echo $an['note']." ,";*/
+                        /*echo $an['note'] . '-';*/
                         $moyenne = $moyenne + $an['note'];
                         $total = $total + 1;
                     }
