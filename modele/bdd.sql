@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Jeu 20 Juin 2019 à 16:50
+-- Généré le :  Ven 28 Juin 2019 à 14:53
 -- Version du serveur :  5.7.26-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.17-0ubuntu0.18.04.1
 
@@ -86,7 +86,16 @@ INSERT INTO `note` (`idProfil`, `idNote`, `note`, `idMatiere`, `nomNote`) VALUES
 (34, 59, 3, 4, 'DHCP/DNS'),
 (30, 60, 5, 5, 'Gestion des personnes nulles'),
 (33, 61, 1, 5, 'Gestion des personnes nulles'),
-(31, 62, 20, 6, 'largent du peuple');
+(31, 62, 20, 6, 'largent du peuple'),
+(30, 63, 13, 1, 'Division'),
+(30, 64, 11, 1, 'Addition'),
+(35, 65, 12, 4, 'BDD'),
+(35, 66, 12, 1, 'Math'),
+(35, 67, 12, 3, 'lolo'),
+(35, 68, 20, 1, 'po'),
+(29, 69, 12, 2, 'Dictée'),
+(29, 70, 12, 2, 'Dictée'),
+(29, 71, 12, 2, 'Dictée');
 
 -- --------------------------------------------------------
 
@@ -120,7 +129,9 @@ INSERT INTO `profil` (`id`, `login`, `nom`, `prenom`, `mail`, `mdp`, `classe`, `
 (31, 'eleve3', 'Bruny', 'Carla', 'eleve3@gmail.com', 'un3kCd3Hg/4pI', 'MUC', 1, '2019-06-20 16:35:40'),
 (32, 'eleve4', 'Zinedine', 'Zidane', 'eleve4@gmail.com', 'unBLtW3Odm9s.', 'SIO', 1, '2019-06-20 16:36:07'),
 (33, 'eleve5', 'Washington', 'George', 'eleve5@gmail.com', 'unWSMjW9AvrZY', 'GPME', 1, '2019-06-20 16:36:41'),
-(34, 'eleve6', 'Van Dam', 'Jean-Claude', 'eleve6@gmail.com', 'unsendCRtgC/.', 'SIO', 1, '2019-06-20 16:37:29');
+(34, 'eleve6', 'Van Dam', 'Jean-Claude', 'eleve6@gmail.com', 'unsendCRtgC/.', 'SIO', 1, '2019-06-20 16:37:29'),
+(35, 'pedro', 'lopez', 'Pedro', 'pedro@gmail.com', 'unYOe4.B6eFc.', 'SIO', 3, '2019-06-21 14:43:32'),
+(36, 'diemer', 'Diemer', 'Michel', 'mail@gmail.com', 'unKI2Nce1vHag', NULL, 2, '2019-06-21 14:48:23');
 
 -- --------------------------------------------------------
 
@@ -177,12 +188,12 @@ ALTER TABLE `matiere`
 -- AUTO_INCREMENT pour la table `note`
 --
 ALTER TABLE `note`
-  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT pour la table `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- Contraintes pour les tables exportées
 --
